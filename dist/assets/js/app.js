@@ -153,4 +153,30 @@ $(function () {
 	}
 
 	mainSwaiper()
+
+	// слайдер values
+	function valuesSwaip() {
+		let valuesSlaiderBox = document.querySelectorAll('.values-slaider');
+
+		if (valuesSlaiderBox) {
+
+			const valuesSwiper = new Swiper('.values-slaider', {
+
+
+				scrollbar: {
+					el: '.value-pagination',
+				},
+
+				navigation: {
+					nextEl: '.values-slaider-next',
+					prevEl: '.values-slaider-prev',
+				},
+				autoHeight: true
+			});
+
+
+		}
+	}
+
+	valuesSwaip()
 })
