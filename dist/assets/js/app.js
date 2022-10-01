@@ -157,21 +157,25 @@ $(function () {
 	// слайдер values
 	function valuesSwaip() {
 		let valuesSlaiderBox = document.querySelectorAll('.values-slaider');
-
 		if (valuesSlaiderBox) {
+			const valuesSwiperOne = new Swiper(".values-slaider-container", {
+				loop: false,
+				slidesPerView: 6,
+				freeMode: true,
+			});
 
-			const valuesSwiper = new Swiper('.values-slaider', {
-
-
+			const valuesSwiperTwo = new Swiper('.values-slaider', {
 				scrollbar: {
 					el: '.value-pagination',
 				},
-
 				navigation: {
 					nextEl: '.values-slaider-next',
 					prevEl: '.values-slaider-prev',
 				},
-				autoHeight: true
+				autoHeight: true,
+				thumbs: {
+					swiper: valuesSwiperOne,
+				},
 			});
 
 
@@ -179,4 +183,75 @@ $(function () {
 	}
 
 	valuesSwaip()
+
+	// cлайдер calendar
+
+	function slaiderCalen() {
+		let clenadrBoxONe = document.querySelector('.clendar-data-container');
+		let clenadrBoxTwo = document.querySelector('.clendar-slaider-container');
+		if (clenadrBoxONe && clenadrBoxTwo) {
+			const sliderThumbs = new Swiper('.clendar-data-container', { // ищем слайдер превью по селектору
+
+				direction: 'vertical',
+				slidesPerView: 4,
+				slideToClickedSlide: true,
+				grabCursor: true,
+				autoHeight: true,
+				autoScrollOffset: 1,
+
+			});
+
+			const sliderImages = new Swiper('.clendar-slaider-container', { // ищем слайдер превью по селектору
+
+				slidesPerView: 1,
+				spaceBetween: 32,
+				navigation: {
+					nextEl: '.clendar-slider__next',
+					prevEl: '.clendar-slider__prev'
+				},
+				grabCursor: true,
+				thumbs: {
+					swiper: sliderThumbs,
+					autoScrollOffset: 1,
+				},
+				autoHeight: true,
+				scrollbar: {
+					el: '.calendar-pagination-line',
+				},
+			});
+			let starts = document.querySelector('.slaid-number-start');
+			let end = document.querySelector('.slaid-number-end');
+
+			end.innerHTML = sliderImages.slides.length;
+
+			sliderImages.on('slideChange', () => {
+				let curentSlider = ++sliderImages.realIndex;
+				starts.innerHTML = curentSlider;
+
+				let calendarPaginationLine = document.querySelector('.calendar-pagination-line .swiper-scrollbar-drag');
+				let calendarBoxData = document.querySelectorAll('.calendar-box-data');
+				if (calendarPaginationLine && calendarBoxData) {
+					calendarBoxData.forEach(item => {
+						if (item.parentElement.classList.contains('swiper-slide-thumb-active')) {
+							calendarPaginationLine.innerHTML = `<span class='calendar-info'>${item.innerHTML}</span>`
+						}
+					})
+				}
+
+			})
+		}
+	}
+
+	slaiderCalen()
+	let calendarPaginationLine = document.querySelector('.calendar-pagination-line .swiper-scrollbar-drag');
+	let calendarBoxData = document.querySelectorAll('.calendar-box-data');
+	if (calendarPaginationLine && calendarBoxData) {
+		calendarBoxData.forEach(item => {
+			if (item.parentElement.classList.contains('swiper-slide-thumb-active')) {
+				calendarPaginationLine.innerHTML = `<span class='calendar-info'>${item.innerHTML}</span>`
+			}
+		})
+	}
+
+
 })
