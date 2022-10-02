@@ -193,11 +193,14 @@ $(function () {
 			const sliderThumbs = new Swiper('.clendar-data-container', { // ищем слайдер превью по селектору
 
 				direction: 'vertical',
-				slidesPerView: 4,
-				slideToClickedSlide: true,
+				slidesPerView: 3,
+				slidesPerColumn: 1,
 				grabCursor: true,
 				autoHeight: true,
 				autoScrollOffset: 1,
+				centeredSlides: true,
+				centeredSlidesBounds: true,
+
 
 			});
 
@@ -243,6 +246,7 @@ $(function () {
 	}
 
 	slaiderCalen()
+
 	let calendarPaginationLine = document.querySelector('.calendar-pagination-line .swiper-scrollbar-drag');
 	let calendarBoxData = document.querySelectorAll('.calendar-box-data');
 	if (calendarPaginationLine && calendarBoxData) {
