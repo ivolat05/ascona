@@ -153,6 +153,34 @@ $(function () {
 	}
 
 	mainSwaiper()
+	function mainSwaiperTwo() {
+		let mainSlaidNav = document.querySelectorAll('.main-slaid-nav');
+		let mainSlaiderBox = document.querySelectorAll('.main-two-box-container')
+		if (mainSlaiderBox) {
+			if (mainSlaiderBox.length == 1) {
+				mainSlaidNav.forEach(item => {
+					item.style.display = 'none';
+				})
+			} else {
+				mainSlaidNav.forEach(item => {
+					item.style.display = 'flex';
+				})
+
+			}
+			const mainSwiperTwo = new Swiper('.main-swipers-two', {
+				scrollbar: {
+					el: '.main-pagination-two'
+				},
+				navigation: {
+					nextEl: '.button-next',
+					prevEl: '.button-prev',
+				},
+				autoHeight: true
+			});
+		}
+	}
+
+	mainSwaiperTwo()
 
 	// слайдер values
 	function valuesSwaip() {
@@ -257,5 +285,30 @@ $(function () {
 		})
 	}
 
+	// info slider
+	function infoSwiper() {
+
+		let infoS = document.querySelectorAll('.info-swiper')
+		if (infoS) {
+
+			const infoSwip = new Swiper('.info-swiper', {
+				slidesPerView: 4,
+				slidesPerColumn: 1,
+				spaceBetween: 65,
+				grabCursor: true,
+				autoHeight: true,
+				autoScrollOffset: 1,
+				scrollbar: {
+					el: '.info-pagination'
+				},
+				navigation: {
+					nextEl: '.info-button-next',
+					prevEl: '.info-button-prev',
+				},
+				autoHeight: true
+			});
+		}
+	}
+	infoSwiper()
 
 })
