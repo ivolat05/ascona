@@ -228,12 +228,11 @@ $(function () {
 				autoScrollOffset: 1,
 				centeredSlides: true,
 				centeredSlidesBounds: true,
-
+				spaceBetween: 32,
 
 			});
 
-			const sliderImages = new Swiper('.clendar-slaider-container', { // ищем слайдер превью по селектору
-
+			const sliderImages = new Swiper('.clendar-slaider-container', {
 				slidesPerView: 1,
 				spaceBetween: 32,
 				navigation: {
@@ -347,7 +346,7 @@ $(function () {
 				item.innerHTML = galarySwiper.slides.length;
 			})
 			galarySwiper.on('slideChange', () => {
-				let curentSlider = ++galarySwiper.realIndex;
+				let curentSlider = galarySwiper.realIndex + 2;
 				starts.forEach(item => {
 					item.innerHTML = curentSlider;
 				})
