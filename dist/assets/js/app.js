@@ -228,7 +228,6 @@ $(function () {
 				autoScrollOffset: 1,
 				centeredSlides: true,
 				centeredSlidesBounds: true,
-				spaceBetween: 32,
 
 			});
 
