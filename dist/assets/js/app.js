@@ -285,14 +285,11 @@ $(function () {
 
 	// info slider
 	function infoSwiper() {
-
 		let infoS = document.querySelectorAll('.info-swiper')
 		if (infoS) {
-
 			const infoSwip = new Swiper('.info-swiper', {
 				slidesPerView: 4,
 				slidesPerColumn: 1,
-				spaceBetween: 65,
 				grabCursor: true,
 				autoHeight: true,
 				autoScrollOffset: 1,
