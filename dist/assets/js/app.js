@@ -41,16 +41,7 @@ $(function () {
 
 
 
-	$('.mask-tell').inputmask("+7 (999) 999-9999", {
-		definitions: {
-			"X": {
-				validator: "[7-8]",
-			}
-		},
-		oncomplete: function () {
-			$(this).val('+7' + $(this).val().substring(2));
-		}
-	});
+
 	// валидация
 	function validationForm() {
 		// кол-во символов ввода телефона
@@ -65,21 +56,20 @@ $(function () {
 					minlength: 3
 
 				},
-				phone: {
+				email: {
 					required: true,
-					minlenghtphone: true
+					presence: true,
+					email: true
 				},
 			},
 			errorPlacement: function (error, element) {
 				return;
 			},
 
-		};
 
-		let form = document.querySelectorAll('form');
-		for (let i = 0; i <= form.length; i++) {
-			$(`#form-${i}`).validate(validate);
-		}
+		};
+		$(`#form-0`).validate(validate);
+
 	}
 	validationForm();
 
@@ -89,7 +79,8 @@ $(function () {
 	$('.open-modal').magnificPopup({
 		type: 'inline',
 		mainClass: 'mfp-fade',
-		autoFocusLast: false
+		autoFocusLast: false,
+		showCloseBtn: false
 
 	});
 	//popup close
