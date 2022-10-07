@@ -311,4 +311,60 @@ $(function () {
 	}
 	infoSwiper()
 
+	//галерея
+	// слайдер main
+	function galarySwaiper() {
+		let galarySlaidNav = document.querySelectorAll('.galary-slaid-nav');
+		let galaryLink = document.querySelectorAll('.galery-link')
+		if (galaryLink) {
+			if (galaryLink.length == 1) {
+				galarySlaidNav.forEach(item => {
+					item.style.display = 'none';
+				})
+			} else {
+				galarySlaidNav.forEach(item => {
+					item.style.display = 'flex';
+				})
+
+			}
+			const galarySwiper = new Swiper('.galary-swaiper', {
+				slidesPerView: 2,
+				slidesPerColumn: 1,
+				spaceBetween: 30,
+				scrollbar: {
+					el: '.galary-pagination	'
+				},
+				navigation: {
+					nextEl: '.galary-button-next',
+					prevEl: '.galary-button-prev',
+				},
+				autoHeight: true
+			});
+
+			let starts = document.querySelectorAll('.galary-start-number');
+			let end = document.querySelectorAll('.galary-end-number');
+			end.forEach(item => {
+				item.innerHTML = galarySwiper.slides.length;
+			})
+			galarySwiper.on('slideChange', () => {
+				let curentSlider = ++galarySwiper.realIndex;
+				starts.forEach(item => {
+					item.innerHTML = curentSlider;
+				})
+			})
+		}
+	}
+	galarySwaiper()
+	$('.gallery-mognific').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		mainClass: 'mfp-img',
+		tLoading: 'Загрузка изоброжения',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+		}
+	});
+
 })
