@@ -353,4 +353,29 @@ $(function () {
 		}
 	});
 
+	//menu
+	function menu() {
+		let body = document.querySelector('body');
+		let menuOpenBtn = document.querySelector('.header-menu-open');
+		let menuBox = document.querySelector('.header-menu');
+		let menuBtnClose = document.querySelectorAll('.--close');
+		if (menuBtnClose && menuBox && menuOpenBtn) {
+			menuOpenBtn.addEventListener('click', () => {
+				body.classList.add('stop');
+				menuBox.classList.add('active');
+			})
+
+			menuBtnClose.forEach(item => {
+				item.addEventListener('click', () => {
+					body.classList.remove('stop');
+					menuBox.classList.remove('active');
+				})
+			})
+
+		}
+	}
+
+	menu();
+
+
 })
