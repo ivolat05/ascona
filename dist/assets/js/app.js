@@ -167,7 +167,6 @@ $(function () {
 				},
 				email: {
 					required: true,
-					presence: true,
 					email: true
 				},
 			},
