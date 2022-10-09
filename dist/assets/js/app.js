@@ -291,7 +291,23 @@ $(function () {
 					nextEl: '.info-button-next',
 					prevEl: '.info-button-prev',
 				},
-				autoHeight: true
+				autoHeight: true,
+				breakpoints: {
+					320: {
+						slidesPerView: 1
+					},
+					500: {
+						slidesPerView: 2
+					},
+
+					762: {
+						slidesPerView: 3
+					},
+
+					992: {
+						slidesPerView: 4
+					}
+				}
 			});
 		}
 	}
@@ -324,7 +340,15 @@ $(function () {
 					nextEl: '.galary-button-next',
 					prevEl: '.galary-button-prev',
 				},
-				autoHeight: true
+				autoHeight: true,
+				breakpoints: {
+					320: {
+						slidesPerView: 1.2
+					},
+					572: {
+						slidesPerView: 2
+					}
+				}
 			});
 
 			let starts = document.querySelectorAll('.galary-start-number');
