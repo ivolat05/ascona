@@ -356,12 +356,43 @@ $(function () {
 			end.forEach(item => {
 				item.innerHTML = galarySwiper.slides.length;
 			})
-			galarySwiper.on('slideChange', () => {
-				let curentSlider = galarySwiper.realIndex + 2;
-				starts.forEach(item => {
-					item.innerHTML = curentSlider;
+			if (window.innerWidth >= 572) {
+				galarySwiper.on('slideChange', () => {
+
+					let curentSlider = galarySwiper.realIndex + 2;
+					starts.forEach(item => {
+						item.innerHTML = curentSlider;
+					})
 				})
-			})
+			} else {
+				galarySwiper.on('slideChange', () => {
+
+					let curentSlider = galarySwiper.realIndex + 1;
+					starts.forEach(item => {
+						item.innerHTML = curentSlider;
+					})
+				})
+			}
+			window.addEventListener("resize", function () {
+				if (window.innerWidth >= 572) {
+					galarySwiper.on('slideChange', () => {
+
+						let curentSlider = galarySwiper.realIndex + 2;
+						starts.forEach(item => {
+							item.innerHTML = curentSlider;
+						})
+					})
+				} else {
+					galarySwiper.on('slideChange', () => {
+
+						let curentSlider = galarySwiper.realIndex + 1;
+						starts.forEach(item => {
+							item.innerHTML = curentSlider;
+						})
+					})
+				}
+			});
+
 		}
 	}
 	galarySwaiper()
